@@ -1,0 +1,70 @@
+<h4 style="margin: 30px auto"> Take <span class="fa fa-coffee" aria-hidden="true"></span> and find yourself in the music !</h4>
+<form>
+    <div class="form-group">
+        <label style="margin-right: 20px"> Search by </label>
+        <label style="margin-right: 10px" class="radio-inline">
+      <input type="radio" name="optradio" checked="checked" (click)="changeSearchTypeToArtist()">Artist
+    </label>
+        <label class="radio-inline">
+      <input type="radio" name="optradio" (click)="changeSearchTypeToTrack()">Track
+    </label>
+
+    </div>
+    <div class="form-group">
+        <input autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" (keyup)="searchMusic()" type="text" name="searchStr" [(ngModel)]="searchStr" class="form-control" placeholder="Search music by {{type_artist ? 'artist':'track'}} ..."
+        />
+    </div>
+
+</form>
+
+<div *ngIf="searchResult_artist && type_artist">
+    <div *ngFor="let artist of searchResult_artist">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="search-res well">
+                    <h4><a routerLink="/artist/{{artist.id}}">{{artist.name}}</a></h4>
+                    <div>
+                        <strong> Genres: </strong>
+                        <span *ngFor="let genre of artist.genres; let i = index"> <strong *ngIf="(i < 5)">{{genre}},</strong></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<div *ngIf="searchResult_track && !type_artist">
+    <div *ngFor="let track of searchResult_track">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="search-res well">
+                    <h4>{{track.name}}</h4>
+
+                    <div>
+                        <strong>Rating: </strong>
+                        <span class="star-rating" *ngFor="let i of Arr(Math.round(track.popularity/10)).fill(1)"><i class="fa fa-star" aria-hidden="true"></i></span>
+                        <span class="star-rating" *ngFor="let i of Arr(10 - Math.round(track.popularity/10)).fill(1)"><i class="fa fa-star-o" aria-hidden="true"></i></span>
+                    </div>
+
+
+                    <div>
+                        <strong>Artist: </strong>
+                        <span *ngFor="let artist of track.artists"><a routerLink="/artist/{{artist.id}}">{{artist.name}}, </a></span>
+                    </div>
+                    <div style="margin-bottom: 15px">
+                        <strong>Album: </strong>
+                        <span><a routerLink="/album/{{track.album.id}}">{{track.album.name}}</a></span>
+                    </div>
+                    <div>
+                        <a class="preview-button" [ngStyle]="track.preview_url?{'pointer-events': 'auto'}:{'pointer-events': 'none', 'color': '#7c7777'}" href="{{track.preview_url}}" target="_blank">Preview Track {{track.preview_url?'':'(n/a)'}}</a>
+                        <a class="listen-spotify" style="margin-left: 2em;" href="{{track.external_urls.spotify}}" target="_blank">Listen on Spotify</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

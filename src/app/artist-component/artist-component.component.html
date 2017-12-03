@@ -1,0 +1,24 @@
+<a class="back-to-search-btn" routerLink="/"><i class="fa fa-arrow-left back-to-search" aria-hidden="true"> Back to search</i></a>
+<div *ngIf="artist">
+  <div class="artist-header">
+    <div class="thumb-container-element" *ngIf="artist.images.length>0">
+        <img src="{{artist.images[0].url}}" />
+    </div>
+    <div class="artist-info">
+        <h1> {{artist.name}} </h1>
+        <p *ngIf="artist.genres.length>0">
+            <strong>Genres</strong>: <span *ngFor="let gen of artist.genres">{{gen}}, </span>
+        </p>
+    </div>
+  </div>
+
+  <div class="artist-album">
+    <div class="album-container" *ngFor="let album of albums">
+        <div *ngIf="album.images.length>0">
+            <img class="album-thumb img-thumbnail" src={{album.images[0].url}}/>
+            <h4 class="album-name"> {{album.name}}</h4>
+            <a routerLink="/album/{{album.id}}" class="album-detail-button">Album Detail</a>
+        </div>
+    </div>
+  </div>
+</div>

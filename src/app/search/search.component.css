@@ -1,0 +1,26 @@
+.search-res {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.well {
+    background: rgba(86, 61, 124, .15);
+    padding: 0.5em;
+    margin-bottom: 2em;
+    border-radius: 1em;
+}
+
+.star-rating {
+    font-size: 20;
+    color: #efec39;
+}
+
+.preview-button, .listen-spotify {
+    color: white;
+    display: inline-block;
+    padding: 0.3em;
+    background: rgb(23, 165, 170);
+    border-radius: 0.3em;
+}
+
