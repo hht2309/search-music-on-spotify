@@ -6,9 +6,12 @@ import {AlbumComponentComponent} from './album-component/album-component.compone
 
 
 const routes: Routes = [
-  {path:'', component: SearchComponent}, 
-  {path:'artist/:id', component: ArtistComponentComponent}, 
-  {path:'album/:id', component: AlbumComponentComponent}
+  {path:'', component: SearchComponent,
+  pathMatch: 'full'}, 
+  {path:'artist/:id', component: ArtistComponentComponent,
+  pathMatch: 'full'}, 
+  {path:'album/:id', component: AlbumComponentComponent,
+  pathMatch: 'full'}
 ]
 
 @NgModule({
