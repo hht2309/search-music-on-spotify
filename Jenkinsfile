@@ -9,6 +9,9 @@ node {
             sh 'docker -v'
             sh 'printenv'
         }
+        stage('Build') {
+            echo 'Build stage'
+        }
     }
     catch (err) {
         throw err
