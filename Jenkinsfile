@@ -10,7 +10,7 @@ node {
             sh 'printenv'
         }
         stage('Build') {
-            sh 'docker build -t spotify -f Dockerfile.test --no-cache'
+            sh 'docker build -t spotify -f Dockerfile.test --no-cache .'
             echo 'Built successfully !'   
         }
     }
