@@ -11,7 +11,7 @@ node {
         }
         stage('Build and deploy') {
             sh 'docker build -t search-music-spotify --no-cache .'
-            sh 'docker tag react-app localhost:5000/search-music-spotify'
+            sh 'docker tag search-music-spotify localhost:5000/search-music-spotify'
 	    sh 'docker push localhost:5000/search-music-spotify'
             sh 'docker rmi -f search-music-spotify localhost:5000/search-music-spotify'
         }
