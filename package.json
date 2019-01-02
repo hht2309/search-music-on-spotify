@@ -7,6 +7,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod --build-optimizer --environment=prod",
+    "start:server":"node server.js",
     "build_watch": "ng build --watch", 
     "postinstall": "ng build --prod --build-optimizer --environment=prod"
   },
