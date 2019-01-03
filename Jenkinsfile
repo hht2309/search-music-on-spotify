@@ -10,8 +10,6 @@ node {
             sh 'printenv'
         }
 	stage('Clean up') {
-	    def test_var = 'mystring'
-            print "test_var = "  test_var
 	    sh 'docker rmi -f localhost:5000/search-music-spotify:latest'
 	}
         stage('Build') { 
