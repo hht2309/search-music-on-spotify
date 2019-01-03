@@ -19,7 +19,7 @@ node {
             sh 'docker rmi -f search-music-spotify localhost:5000/search-music-spotify'
         }
 	stage('Deploy') {
-	    sh 'docker run -p 3000:3000 --name search-music-spotify localhost:5000/search-music-spotify:latest'
+	    sh 'docker run -d -p 3000:3000 --name search-music-spotify localhost:5000/search-music-spotify:latest'
 	
 	}
     }
