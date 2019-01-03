@@ -23,7 +23,8 @@ node {
 	    sh 'docker run -p 3000:3000 --name search-music-spotify localhost:5000/search-music-spotify:latest'
 	
 	}
+    }
     catch (err) {
-        throw err
+       throw err
     }
 }
