@@ -10,8 +10,7 @@ node {
             sh 'printenv'
         }
 	stage('Clean up') {
-	    sh 'docker container rm $(docker container ls | grep localhost:5000 | awk '{print $1}')'
-	    sh 'docker image rm $(docker image ls | grep localhost:5000) | awk '{print $3}''
+	    sh 'docker rmi -f localhost:5000/search-music-spotify:latest'
 	}
         stage('Build') { 
             sh 'docker build -t search-music-spotify --no-cache .'
